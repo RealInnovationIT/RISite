@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const lang = 'en';
+---
+
+<BaseLayout title="404 – Page Not Found | RealInnovation" lang={lang}>
+  <section class="min-h-[70vh] flex items-center justify-center">
+    <div class="text-center px-6">
+      <h1 class="text-8xl font-black gradient-text mb-4">404</h1>
+      <p class="text-xl text-neutral-300 mb-8">Page not found</p>
+      <a href="/" class="btn-primary px-8 py-4">Back to Home</a>
+    </div>
+  </section>
+</BaseLayout>

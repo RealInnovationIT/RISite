@@ -1,0 +1,91 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { t, useTranslatedPath } from '@/i18n/utils';
+import { LiquidGradient } from '@/components/react/LiquidGradient';
+
+const lang = 'en';
+const tp = useTranslatedPath(lang);
+---
+
+<BaseLayout title="Contact – RealInnovation" description="Whether you need a technical partner or a complete digital transformation — we are here to help." lang={lang}>
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <LiquidGradient client:load className="opacity-15" />
+    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-emerald-400 border border-emerald-500/20 bg-emerald-500/5 mb-6">
+        {t(lang, 'contact.badge')}
+      </span>
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight">
+        {t(lang, 'contact.title')} <span class="gradient-text">{t(lang, 'contact.titleHighlight')}</span>
+      </h1>
+      <p class="text-lg text-neutral-300 max-w-3xl mx-auto">{t(lang, 'contact.subtitle')}</p>
+    </div>
+  </section>
+
+  <!-- Contact Form + Info -->
+  <section class="py-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid lg:grid-cols-5 gap-10">
+        <!-- Form -->
+        <div class="lg:col-span-3 rounded-2xl p-8 bg-neutral-900/50 border border-white/5">
+          <form class="space-y-5" action="#" method="POST">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm text-neutral-400 mb-2">{t(lang, 'contact.form.name')}</label>
+                <input type="text" name="name" required class="w-full px-4 py-3 rounded-xl bg-neutral-800/50 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+              </div>
+              <div>
+                <label class="block text-sm text-neutral-400 mb-2">{t(lang, 'contact.form.email')}</label>
+                <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-neutral-800/50 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm text-neutral-400 mb-2">{t(lang, 'contact.form.company')}</label>
+              <input type="text" name="company" class="w-full px-4 py-3 rounded-xl bg-neutral-800/50 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-500/50 transition-colors" />
+            </div>
+            <div>
+              <label class="block text-sm text-neutral-400 mb-2">{t(lang, 'contact.form.interest')}</label>
+              <select name="interest" class="w-full px-4 py-3 rounded-xl bg-neutral-800/50 border border-white/10 text-white focus:outline-none focus:border-emerald-500/50 transition-colors">
+                {(t(lang, 'contact.form.interestOptions') as unknown as string[]).map((opt: string) => (
+                  <option value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm text-neutral-400 mb-2">{t(lang, 'contact.form.message')}</label>
+              <textarea name="message" rows={5} class="w-full px-4 py-3 rounded-xl bg-neutral-800/50 border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-emerald-500/50 transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full justify-center py-4">
+              {t(lang, 'contact.form.submit')}
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="rounded-2xl p-6 bg-neutral-900/50 border border-white/5">
+            <h3 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-3">Email</h3>
+            <a href={`mailto:${t(lang, 'contact.info.email')}`} class="text-white hover:text-emerald-300 transition-colors font-medium">
+              {t(lang, 'contact.info.email')}
+            </a>
+          </div>
+          <div class="rounded-2xl p-6 bg-neutral-900/50 border border-white/5">
+            <h3 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-3">Location</h3>
+            <p class="text-white font-medium">{t(lang, 'contact.info.location')}</p>
+          </div>
+          <div class="rounded-2xl p-6 bg-neutral-900/50 border border-white/5">
+            <h3 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-3">GitHub</h3>
+            <a href="https://github.com/RealInnovationIT" target="_blank" rel="noopener" class="text-white hover:text-emerald-300 transition-colors font-medium">
+              @{t(lang, 'contact.info.github')}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

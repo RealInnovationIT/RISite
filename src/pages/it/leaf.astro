@@ -1,0 +1,112 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { t, useTranslatedPath } from '@/i18n/utils';
+import { ConstellationNetwork } from '@/components/react/ConstellationNetwork';
+import { EcosystemMap } from '@/components/react/EcosystemMap';
+import { BorderBeam } from '@/components/react/BorderBeam';
+
+const lang = 'it';
+const tp = useTranslatedPath(lang);
+
+const modules = [
+  { id: 'rotor', name: t(lang, 'modules.rotor.name'), tagline: t(lang, 'modules.rotor.tagline'), description: t(lang, 'modules.rotor.description'), status: 'Beta' as const, icon: '⚙️', color: '#f97316', details: { solves: t(lang, 'modules.rotor.solves'), howItWorks: t(lang, 'modules.rotor.howItWorks'), useCase: t(lang, 'modules.rotor.useCase') } },
+  { id: 'rootview', name: t(lang, 'modules.rootview.name'), tagline: t(lang, 'modules.rootview.tagline'), description: t(lang, 'modules.rootview.description'), status: 'Planned' as const, icon: '📊', color: '#3b82f6', details: { solves: t(lang, 'modules.rootview.solves'), howItWorks: t(lang, 'modules.rootview.howItWorks'), useCase: t(lang, 'modules.rootview.useCase') } },
+  { id: 'fastoo', name: t(lang, 'modules.fastoo.name'), tagline: t(lang, 'modules.fastoo.tagline'), description: t(lang, 'modules.fastoo.description'), status: 'In Development' as const, icon: '💰', color: '#10b981', details: { solves: t(lang, 'modules.fastoo.solves'), howItWorks: t(lang, 'modules.fastoo.howItWorks'), useCase: t(lang, 'modules.fastoo.useCase') } },
+  { id: 'lawrf', name: t(lang, 'modules.lawrf.name'), tagline: t(lang, 'modules.lawrf.tagline'), description: t(lang, 'modules.lawrf.description'), status: 'In Development' as const, icon: '⚖️', color: '#ef4444', details: { solves: t(lang, 'modules.lawrf.solves'), howItWorks: t(lang, 'modules.lawrf.howItWorks'), useCase: t(lang, 'modules.lawrf.useCase') } },
+  { id: 'elytra', name: t(lang, 'modules.elytra.name'), tagline: t(lang, 'modules.elytra.tagline'), description: t(lang, 'modules.elytra.description'), status: 'Planned' as const, icon: '🤝', color: '#a855f7', details: { solves: t(lang, 'modules.elytra.solves'), howItWorks: t(lang, 'modules.elytra.howItWorks'), useCase: t(lang, 'modules.elytra.useCase') } },
+  { id: 'glide', name: t(lang, 'modules.glide.name'), tagline: t(lang, 'modules.glide.tagline'), description: t(lang, 'modules.glide.description'), status: 'Planned' as const, icon: '🔄', color: '#06b6d4', details: { solves: t(lang, 'modules.glide.solves'), howItWorks: t(lang, 'modules.glide.howItWorks'), useCase: t(lang, 'modules.glide.useCase') } },
+  { id: 'verdanthr', name: t(lang, 'modules.verdanthr.name'), tagline: t(lang, 'modules.verdanthr.tagline'), description: t(lang, 'modules.verdanthr.description'), status: 'Planned' as const, icon: '👥', color: '#22c55e', details: { solves: t(lang, 'modules.verdanthr.solves'), howItWorks: t(lang, 'modules.verdanthr.howItWorks'), useCase: t(lang, 'modules.verdanthr.useCase') } },
+];
+---
+
+<BaseLayout title="Leaf – Ecosistema Modulare per le Imprese" lang={lang}>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="relative pt-32 pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-[#0a0a0f]" />
+    <ConstellationNetwork client:load className="opacity-30" nodeCount={50} connectionDistance={140} nodeColor="rgba(16,185,129,0.6)" lineColor="rgba(16,185,129,0.15)" />
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0f]" />
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-emerald-400 border border-emerald-500/20 bg-emerald-500/5 mb-6">{t(lang, 'leaf.badge')}</span>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight">
+        {t(lang, 'leaf.title')} <span class="gradient-text">{t(lang, 'leaf.titleHighlight')}</span>
+        <br />{t(lang, 'leaf.titleEnd')}
+      </h1>
+      <p class="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto mt-6 leading-relaxed">{t(lang, 'leaf.subtitle')}</p>
+    </div>
+  </section>
+
+  <!-- ===================== WHAT IS LEAF ===================== -->
+  <section class="py-24">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="relative rounded-2xl p-10 md:p-14 bg-gradient-to-br from-emerald-500/5 to-transparent border border-emerald-500/10 overflow-hidden">
+        <BorderBeam client:visible size={400} duration={20} />
+        <div class="flex items-start gap-6">
+          <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center"><span class="text-3xl">🍃</span></div>
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">{t(lang, 'leaf.whatIs.title')}</h2>
+            <p class="text-neutral-300 leading-relaxed text-lg">{t(lang, 'leaf.whatIs.description')}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ECOSYSTEM MAP ===================== -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
+          L'<span class="gradient-text">Ecosistema</span>
+        </h2>
+        <p class="text-neutral-400 max-w-2xl mx-auto">Clicca su qualsiasi modulo per scoprire cosa fa, cosa risolve e come funziona. Ogni modulo si connette agli altri attraverso la nostra architettura event-driven.</p>
+      </div>
+
+      <EcosystemMap
+        client:visible
+        modules={modules}
+        centerLabel="Leaf"
+        centerSublabel="Core Event-Driven"
+      />
+    </div>
+  </section>
+
+  <!-- ===================== SYNERGY ===================== -->
+  <section class="py-24 bg-neutral-950/80 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">{t(lang, 'leaf.synergy.title')}</h2>
+        <p class="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">{t(lang, 'leaf.synergy.description')}</p>
+      </div>
+
+      <div class="mt-16 grid md:grid-cols-3 gap-6 text-center">
+        <div class="rounded-2xl p-8 bg-neutral-900/30 border border-white/5">
+          <div class="text-4xl mb-4">🔗</div>
+          <h4 class="text-lg font-bold text-white mb-2">Event-Driven</h4>
+          <p class="text-sm text-neutral-400">I moduli comunicano tramite domain events. Nessuna dipendenza diretta, tracciabilità completa.</p>
+        </div>
+        <div class="rounded-2xl p-8 bg-neutral-900/30 border border-white/5">
+          <div class="text-4xl mb-4">🏗️</div>
+          <h4 class="text-lg font-bold text-white mb-2">Microservizi</h4>
+          <p class="text-sm text-neutral-400">Ogni modulo gira indipendentemente su Kubernetes. Scala ciò che ti serve, quando ti serve.</p>
+        </div>
+        <div class="rounded-2xl p-8 bg-neutral-900/30 border border-white/5">
+          <div class="text-4xl mb-4">🔒</div>
+          <h4 class="text-lg font-bold text-white mb-2">Multi-Tenant</h4>
+          <p class="text-sm text-neutral-400">Infrastruttura condivisa, dati isolati. Ogni query è scoped alla tua organizzazione.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="py-24 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-5xl font-black text-white mb-6">{t(lang, 'cta.title')}</h2>
+      <p class="text-lg text-neutral-300 max-w-2xl mx-auto mb-10">{t(lang, 'cta.subtitle')}</p>
+      <a href={tp('/contact')} class="btn-primary text-base px-8 py-4">{t(lang, 'cta.btn1')}</a>
+    </div>
+  </section>
+
+</BaseLayout>

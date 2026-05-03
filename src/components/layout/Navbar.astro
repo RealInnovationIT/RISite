@@ -1,0 +1,94 @@
+---
+import { t, useTranslatedPath } from '@/i18n/utils';
+
+interface Props {
+  lang: 'en' | 'it';
+}
+
+const { lang } = Astro.props;
+const tp = useTranslatedPath(lang);
+const alternateLang = lang === 'en' ? 'it' : 'en';
+const alternatePath = lang === 'en' ? `/it${Astro.url.pathname}` : Astro.url.pathname.replace('/it', '') || '/';
+
+const links = [
+  { href: tp('/'), label: t(lang, 'nav.home') },
+  { href: tp('/about'), label: t(lang, 'nav.about') },
+  { href: tp('/services'), label: t(lang, 'nav.services') },
+  { href: tp('/leaf'), label: t(lang, 'nav.leaf') },
+  { href: tp('/pricing'), label: t(lang, 'nav.pricing') },
+  { href: tp('/contact'), label: t(lang, 'nav.contact') },
+];
+---
+
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href={tp('/')} class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-300 flex items-center justify-center font-bold text-white text-sm group-hover:scale-110 transition-transform">
+          RI
+        </div>
+        <span class="font-bold text-lg text-white">
+          Real<span class="gradient-text">Innovation</span>
+        </span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-1">
+        {links.map(link => (
+          <a href={link.href} class="px-3 py-2 text-sm font-medium text-neutral-300 hover:text-emerald-400 rounded-lg hover:bg-white/5 transition-all duration-200">
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Right side: Lang Switch + Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switch -->
+        <a href={alternatePath} class="px-2.5 py-1 text-xs font-semibold uppercase rounded-md border border-white/10 text-neutral-300 hover:text-emerald-400 hover:border-emerald-400/30 transition-all">
+          {alternateLang.toUpperCase()}
+        </a>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-neutral-300 hover:text-white transition-colors" aria-label="Toggle menu">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-neutral-900/95 backdrop-blur-xl">
+    <div class="px-4 py-4 space-y-1">
+      {links.map(link => (
+        <a href={link.href} class="block px-4 py-2.5 text-sm font-medium text-neutral-300 hover:text-emerald-400 hover:bg-white/5 rounded-lg transition-all">
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  // Scroll glass effect
+  const nav = document.getElementById('main-nav');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (scrollY > 50) {
+      nav.classList.add('bg-neutral-900/80', 'backdrop-blur-xl', 'border-b', 'border-white/5', 'shadow-lg', 'shadow-black/10');
+    } else {
+      nav.classList.remove('bg-neutral-900/80', 'backdrop-blur-xl', 'border-b', 'border-white/5', 'shadow-lg', 'shadow-black/10');
+    }
+    lastScroll = scrollY;
+  });
+
+  // Mobile toggle
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
