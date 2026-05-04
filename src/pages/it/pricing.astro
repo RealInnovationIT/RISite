@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { t, useTranslatedPath } from '@/i18n/utils';
-import { BorderBeam } from '@/components/react/BorderBeam';
+import { LeafPricingConfigurator } from '@/components/react/LeafPricingConfigurator';
 
 const lang = 'it';
 const tp = useTranslatedPath(lang);
@@ -18,45 +18,7 @@ const tp = useTranslatedPath(lang);
   </section>
 
   <section class="py-16">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="rounded-2xl p-8 bg-neutral-900/50 border border-white/5 hover:border-emerald-500/20 transition-colors">
-          <h3 class="text-xl font-bold text-white mb-2">{t(lang, 'pricing.starter.name')}</h3>
-          <div class="mb-4"><span class="text-4xl font-black text-white">{t(lang, 'pricing.starter.price')}</span><span class="text-neutral-400 text-sm">{t(lang, 'pricing.starter.period')}</span></div>
-          <p class="text-neutral-400 text-sm mb-6">{t(lang, 'pricing.starter.description')}</p>
-          <ul class="space-y-3 mb-8">
-            {(t(lang, 'pricing.starter.features') as unknown as string[]).map((f: string) => (
-              <li class="flex items-center gap-2 text-sm text-neutral-300"><svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>{f}</li>
-            ))}
-          </ul>
-          <a href={tp('/contact')} class="btn-secondary w-full justify-center border-white/10 text-white hover:border-emerald-400/50">{t(lang, 'pricing.cta')}</a>
-        </div>
-        <div class="relative rounded-2xl p-8 bg-neutral-900/70 border border-emerald-500/30 overflow-hidden">
-          <BorderBeam client:visible size={200} duration={10} />
-          <div class="absolute top-0 right-0 px-3 py-1 rounded-bl-lg bg-emerald-500 text-xs font-bold text-black">Popolare</div>
-          <h3 class="text-xl font-bold text-white mb-2">{t(lang, 'pricing.professional.name')}</h3>
-          <div class="mb-4"><span class="text-4xl font-black text-white">{t(lang, 'pricing.professional.price')}</span><span class="text-neutral-400 text-sm">{t(lang, 'pricing.professional.period')}</span></div>
-          <p class="text-neutral-400 text-sm mb-6">{t(lang, 'pricing.professional.description')}</p>
-          <ul class="space-y-3 mb-8">
-            {(t(lang, 'pricing.professional.features') as unknown as string[]).map((f: string) => (
-              <li class="flex items-center gap-2 text-sm text-neutral-300"><svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>{f}</li>
-            ))}
-          </ul>
-          <a href={tp('/contact')} class="btn-primary w-full justify-center">{t(lang, 'pricing.cta')}</a>
-        </div>
-        <div class="rounded-2xl p-8 bg-neutral-900/50 border border-white/5 hover:border-emerald-500/20 transition-colors">
-          <h3 class="text-xl font-bold text-white mb-2">{t(lang, 'pricing.enterprise.name')}</h3>
-          <div class="mb-4"><span class="text-4xl font-black text-white">{t(lang, 'pricing.enterprise.price')}</span></div>
-          <p class="text-neutral-400 text-sm mb-6">{t(lang, 'pricing.enterprise.description')}</p>
-          <ul class="space-y-3 mb-8">
-            {(t(lang, 'pricing.enterprise.features') as unknown as string[]).map((f: string) => (
-              <li class="flex items-center gap-2 text-sm text-neutral-300"><svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>{f}</li>
-            ))}
-          </ul>
-          <a href={tp('/contact')} class="btn-secondary w-full justify-center border-white/10 text-white hover:border-emerald-400/50">{t(lang, 'pricing.ctaEnterprise')}</a>
-        </div>
-      </div>
-    </div>
+    <LeafPricingConfigurator client:load lang="it" contactPath={tp('/contact')} />
   </section>
 
   <section class="py-20 border-t border-white/5">

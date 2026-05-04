@@ -405,3 +405,62 @@ body {
 .glass-border {
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
+
+/* ===== HERO ORB ANIMATIONS ===== */
+.hero-orb-1,
+.hero-orb-2,
+.hero-orb-3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+.hero-orb-1 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(16,185,129,.12) 0%, transparent 70%);
+  top: -200px;
+  left: -100px;
+  animation: heroOrb1 20s ease-in-out infinite;
+}
+.hero-orb-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(6,95,63,.18) 0%, transparent 70%);
+  top: 50px;
+  right: -150px;
+  animation: heroOrb2 25s ease-in-out infinite;
+}
+.hero-orb-3 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(20,190,128,.09) 0%, transparent 70%);
+  bottom: -100px;
+  left: 30%;
+  animation: heroOrb3 18s ease-in-out infinite;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  opacity: .025;
+  background-image:
+    linear-gradient(rgba(16,185,129,.8) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16,185,129,.8) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+@keyframes heroOrb1 {
+  0%,100% { transform: translate(0,0); }
+  33%     { transform: translate(60px,-80px); }
+  66%     { transform: translate(-40px,40px); }
+}
+@keyframes heroOrb2 {
+  0%,100% { transform: translate(0,0); }
+  33%     { transform: translate(-70px,60px); }
+  66%     { transform: translate(50px,-40px); }
+}
+@keyframes heroOrb3 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(80px,30px) scale(1.1); }
+  66%     { transform: translate(-50px,-60px) scale(.9); }
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 540" fill="none">
+  <defs>
+    <linearGradient id="lg" x1="40" y1="20" x2="420" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2dd4bf"/>
+      <stop offset="40%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#lg)"
+    d="M238,20 C312,14 424,74 460,182 C494,284 474,392 402,456 C350,500 284,522 228,518 C166,512 94,474 56,400 C16,322 18,226 62,146 C98,76 158,26 238,20Z"
+  />
+  <path
+    fill="white" opacity="0.95"
+    d="M152,148 C186,106 302,110 348,164 C300,138 196,148 182,208 C166,180 146,164 152,148Z"
+  />
+  <path
+    fill="white" opacity="0.88"
+    d="M140,252 C166,218 250,224 284,274 C252,252 188,260 174,308 C158,282 134,268 140,252Z"
+  />
+</svg>

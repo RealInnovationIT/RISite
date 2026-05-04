@@ -65,15 +65,22 @@ export function ConstellationNetwork({
 
     const handleMouseMove = (e: MouseEvent) => {
       const r = canvas.getBoundingClientRect();
-      mouseRef.current = { x: e.clientX - r.left, y: e.clientY - r.top };
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      // only track when mouse is within canvas bounds
+      if (x >= 0 && x <= r.width && y >= 0 && y <= r.height) {
+        mouseRef.current = { x, y };
+      } else {
+        mouseRef.current = { x: -1000, y: -1000 };
+      }
     };
     const handleMouseLeave = () => {
       mouseRef.current = { x: -1000, y: -1000 };
     };
 
     if (interactive) {
-      canvas.addEventListener("mousemove", handleMouseMove);
-      canvas.addEventListener("mouseleave", handleMouseLeave);
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseleave", handleMouseLeave);
     }
 
     let time = 0;
@@ -183,8 +190,8 @@ export function ConstellationNetwork({
       cancelAnimationFrame(animRef.current);
       window.removeEventListener("resize", resize);
       if (interactive) {
-        canvas.removeEventListener("mousemove", handleMouseMove);
-        canvas.removeEventListener("mouseleave", handleMouseLeave);
+        window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("mouseleave", handleMouseLeave);
       }
     };
   }, [nodeCount, connectionDistance, nodeColor, lineColor, interactive]);
@@ -193,7 +200,7 @@ export function ConstellationNetwork({
     <canvas
       ref={canvasRef}
       className={cn("absolute inset-0 w-full h-full", className)}
-      style={{ display: "block" }}
+      style={{ display: "block", pointerEvents: "none" }}
     />
   );
 }

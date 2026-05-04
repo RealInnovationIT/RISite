@@ -9,60 +9,141 @@ const lang = 'en';
 const tp = useTranslatedPath(lang);
 ---
 
-<BaseLayout title="About – RealInnovation" lang={lang}>
+<BaseLayout title="About RealInnovation – Vision, Mission & Opportunity" lang={lang}>
 
   <!-- ===================== HERO ===================== -->
-  <section class="relative pt-32 pb-20 overflow-hidden">
-    <div class="absolute inset-0 bg-[#0a0a0f]" />
-    <ConstellationNetwork client:load className="opacity-30" nodeCount={40} connectionDistance={160} />
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0f]" />
+  <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+    <ConstellationNetwork client:visible className="absolute inset-0 opacity-50" />
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(6,10,18,0.9)_100%)]" />
 
-    <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-      <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-emerald-400 border border-emerald-500/20 bg-emerald-500/5 mb-6">
-        {t(lang, 'about.badge')}
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center py-32">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-sm mb-8">
+        <span class="text-sm text-emerald-300 font-medium">{t(lang, 'about.badge')}</span>
       </span>
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight">
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
         {t(lang, 'about.title')}
         <span class="gradient-text"> {t(lang, 'about.titleHighlight')}</span>
-        <br />{t(lang, 'about.titleEnd')}
+        <br class="hidden md:block" />{t(lang, 'about.titleEnd')}
       </h1>
-      <p class="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto mt-6 leading-relaxed">
+      <p class="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
         {t(lang, 'about.subtitle')}
       </p>
     </div>
   </section>
 
-  <!-- ===================== STATS ===================== -->
-  <section class="relative py-16 border-y border-white/5 bg-neutral-950/50">
+  <!-- ===================== THE PROBLEM ===================== -->
+  <section class="py-24 border-t border-white/5">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <div class="text-4xl md:text-5xl font-black text-white"><CountUp client:visible end={7} suffix="+" /></div>
-          <p class="text-neutral-400 text-sm mt-2">{t(lang, 'about.stats.modules')}</p>
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-red-400 border border-red-500/20 bg-red-500/5 mb-6">
+            {t(lang, 'about.problem.title')}
+          </span>
+          <h2 class="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">
+            Italian SMEs are drowning in <span class="text-red-400">fragmentation</span>
+          </h2>
+          <p class="text-neutral-300 text-lg leading-relaxed">
+            {t(lang, 'about.problem.description')}
+          </p>
         </div>
-        <div>
-          <div class="text-4xl md:text-5xl font-black text-emerald-400"><CountUp client:visible end={99.9} decimals={1} suffix="%" /></div>
-          <p class="text-neutral-400 text-sm mt-2">{t(lang, 'about.stats.uptime')}</p>
-        </div>
-        <div>
-          <div class="text-4xl md:text-5xl font-black text-white"><CountUp client:visible end={50} prefix="<" suffix="ms" /></div>
-          <p class="text-neutral-400 text-sm mt-2">{t(lang, 'about.stats.response')}</p>
-        </div>
-        <div>
-          <div class="text-4xl md:text-5xl font-black text-emerald-400"><CountUp client:visible end={100} suffix="%" /></div>
-          <p class="text-neutral-400 text-sm mt-2">{t(lang, 'about.stats.italy')}</p>
+        <div class="grid grid-cols-1 gap-6">
+          {[
+            { stat: t(lang, 'about.problem.stat1'), label: t(lang, 'about.problem.stat1Label'), color: 'red' },
+            { stat: t(lang, 'about.problem.stat2'), label: t(lang, 'about.problem.stat2Label'), color: 'orange' },
+            { stat: t(lang, 'about.problem.stat3'), label: t(lang, 'about.problem.stat3Label'), color: 'yellow' },
+          ].map(({ stat, label, color }) => (
+            <div class="relative rounded-xl p-6 bg-neutral-900/60 border border-white/5 backdrop-blur-sm flex items-center gap-6">
+              <div class={`text-3xl md:text-4xl font-black text-${color}-400 min-w-[100px]`}>{stat}</div>
+              <p class="text-neutral-300">{label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ===================== THE SOLUTION ===================== -->
+  <section class="py-24 border-t border-white/5 bg-neutral-950/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Visual side -->
+        <div class="order-2 lg:order-1 flex justify-center">
+          <div class="relative">
+            <div class="absolute inset-0 rounded-full blur-3xl scale-[2.5]" style="background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%);" />
+            <div class="relative w-48 h-48 rounded-full border-2 border-emerald-500/20 bg-neutral-950/80 flex items-center justify-center shadow-[0_0_80px_rgba(16,185,129,0.12)]">
+              <img src="/leaf-logo.svg" alt="Leaf" class="w-28 h-28 object-contain" />
+            </div>
+            <!-- Orbiting dots -->
+            <div class="absolute inset-[-30px] animate-spin" style="animation-duration: 20s;">
+              <div class="absolute top-0 left-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-400/60" />
+            </div>
+            <div class="absolute inset-[-50px] animate-spin" style="animation-duration: 30s; animation-direction: reverse;">
+              <div class="absolute top-0 left-1/2 w-2 h-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/60" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Text side -->
+        <div class="order-1 lg:order-2">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-emerald-400 border border-emerald-500/20 bg-emerald-500/5 mb-6">
+            {t(lang, 'about.solution.title')}
+          </span>
+          <h2 class="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">
+            The <span class="gradient-text">integration brain</span> for your business
+          </h2>
+          <p class="text-neutral-300 text-lg leading-relaxed mb-8">
+            {t(lang, 'about.solution.description')}
+          </p>
+          <div class="flex flex-wrap gap-3">
+            {['Event-Driven', 'Multi-Tenant', 'Real-Time KPIs', 'Modular', 'API-First'].map((tag) => (
+              <span class="px-3 py-1.5 rounded-full text-xs font-medium text-emerald-300 border border-emerald-500/20 bg-emerald-500/5">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE OPPORTUNITY (TAM/SAM/SOM) ===================== -->
+  <section class="py-24 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-cyan-400 border border-cyan-500/20 bg-cyan-500/5 mb-4">
+          {t(lang, 'about.opportunity.title')}
+        </span>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-6">
+          A <span class="text-cyan-400">€18B</span> market waiting to be served
+        </h2>
+        <p class="text-neutral-300 text-lg max-w-3xl mx-auto">
+          {t(lang, 'about.opportunity.description')}
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {[
+          { value: t(lang, 'about.opportunity.tam'), label: t(lang, 'about.opportunity.tamLabel'), color: 'cyan', size: 'text-5xl md:text-6xl' },
+          { value: t(lang, 'about.opportunity.sam'), label: t(lang, 'about.opportunity.samLabel'), color: 'emerald', size: 'text-4xl md:text-5xl' },
+          { value: t(lang, 'about.opportunity.som'), label: t(lang, 'about.opportunity.somLabel'), color: 'green', size: 'text-3xl md:text-4xl' },
+        ].map(({ value, label, color, size }) => (
+          <div class="relative rounded-2xl p-8 bg-neutral-900/60 border border-white/5 text-center overflow-hidden group hover:border-emerald-500/20 transition-colors">
+            <BorderBeam client:visible size={200} duration={15} />
+            <div class={`${size} font-black text-${color}-400 mb-3`}>{value}</div>
+            <p class="text-neutral-400 text-sm font-medium uppercase tracking-wider">{label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== MISSION & VISION ===================== -->
-  <section class="py-24">
+  <section class="py-24 border-t border-white/5 bg-neutral-950/50">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid md:grid-cols-2 gap-8">
-        <div class="relative rounded-2xl p-10 bg-gradient-to-br from-emerald-500/5 to-transparent border border-emerald-500/10 overflow-hidden">
-          <BorderBeam client:visible size={300} duration={15} />
-          <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-6">
+        <div class="relative rounded-2xl p-10 bg-neutral-900/60 border border-white/5 overflow-hidden">
+          <BorderBeam client:visible size={250} duration={12} />
+          <div class="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6">
             <svg class="w-7 h-7 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
             </svg>
@@ -70,11 +151,10 @@ const tp = useTranslatedPath(lang);
           <h3 class="text-2xl font-bold text-white mb-4">{t(lang, 'about.mission.title')}</h3>
           <p class="text-neutral-300 leading-relaxed text-lg">{t(lang, 'about.mission.description')}</p>
         </div>
-
-        <div class="relative rounded-2xl p-10 bg-gradient-to-br from-purple-500/5 to-transparent border border-purple-500/10 overflow-hidden">
-          <BorderBeam client:visible size={300} duration={15} delay={5} />
-          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-6">
-            <svg class="w-7 h-7 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <div class="relative rounded-2xl p-10 bg-neutral-900/60 border border-white/5 overflow-hidden">
+          <BorderBeam client:visible size={250} duration={12} delay={6} />
+          <div class="w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
@@ -87,23 +167,23 @@ const tp = useTranslatedPath(lang);
   </section>
 
   <!-- ===================== WHY US ===================== -->
-  <section class="py-24 bg-neutral-950/80 border-t border-white/5">
+  <section class="py-24 border-t border-white/5">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-5xl font-bold text-white">{t(lang, 'about.whyUs.title')}</h2>
-        <p class="text-neutral-400 mt-4 max-w-2xl mx-auto">{t(lang, 'about.whyUs.subtitle')}</p>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-4">{t(lang, 'about.whyUs.title')}</h2>
+        <p class="text-neutral-400 max-w-2xl mx-auto">{t(lang, 'about.whyUs.subtitle')}</p>
       </div>
-
       <div class="grid md:grid-cols-2 gap-6">
         {[
-          { key: 'engineering', icon: 'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085', color: 'emerald' },
-          { key: 'domain', icon: 'M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25', color: 'blue' },
-          { key: 'speed', icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z', color: 'amber' },
-          { key: 'italy', icon: 'M9 6.75V15m0-8.25a2.25 2.25 0 112.25 2.25H9m0-4.5a2.25 2.25 0 10-2.25 2.25H9m0 0V15m0 0h2.25A2.25 2.25 0 0013.5 12.75v0A2.25 2.25 0 0011.25 10.5H9m0 4.5v5.25m0 0h3.75M9 20.25H5.625A2.625 2.625 0 013 17.625V4.875A2.625 2.625 0 015.625 2.25h12.75A2.625 2.625 0 0121 4.875v12.75A2.625 2.625 0 0118.375 20.25H9', color: 'red' },
-        ].map(({ key, icon, color }) => (
-          <div class="rounded-2xl p-8 bg-neutral-900/50 border border-white/5 hover:border-emerald-500/20 transition-colors">
-            <div class={`w-12 h-12 rounded-xl bg-${color}-500/10 flex items-center justify-center mb-5`}>
-              <svg class={`w-6 h-6 text-${color}-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d={icon} /></svg>
+          { key: 'engineering', icon: 'M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085', num: '01' },
+          { key: 'domain', icon: 'M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342', num: '02' },
+          { key: 'speed', icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z', num: '03' },
+          { key: 'italy', icon: 'M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z', num: '04' },
+        ].map(({ key, icon, num }) => (
+          <div class="relative rounded-2xl p-8 bg-neutral-900/40 border border-white/5 group hover:border-emerald-500/20 transition-colors duration-500">
+            <div class="absolute top-6 right-8 text-6xl font-black text-white/3">{num}</div>
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d={icon} /></svg>
             </div>
             <h3 class="text-xl font-bold text-white mb-3">{t(lang, `about.whyUs.${key}.title`)}</h3>
             <p class="text-neutral-400 leading-relaxed">{t(lang, `about.whyUs.${key}.description`)}</p>
@@ -113,14 +193,14 @@ const tp = useTranslatedPath(lang);
     </div>
   </section>
 
-  <!-- ===================== VALUES ===================== -->
-  <section class="py-24">
+  <!-- ===================== VALUES (Narrative Strip) ===================== -->
+  <section class="py-24 border-t border-white/5 bg-neutral-950/50 overflow-hidden">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-5xl font-bold text-white">{t(lang, 'about.values.title')}</h2>
+        <h2 class="text-3xl md:text-5xl font-black text-white">{t(lang, 'about.values.title')}</h2>
       </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Horizontal scroll on mobile, grid on desktop -->
+      <div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-4 md:pb-0 snap-x snap-mandatory md:snap-none scrollbar-hide">
         {[
           { key: 'innovation', icon: '💡' },
           { key: 'reliability', icon: '🛡️' },
@@ -129,40 +209,26 @@ const tp = useTranslatedPath(lang);
           { key: 'madeInItaly', icon: '🇮🇹' },
           { key: 'security', icon: '🔒' },
         ].map(({ key, icon }) => (
-          <div class="rounded-2xl p-6 bg-neutral-900/30 border border-white/5 hover:border-emerald-500/15 transition-colors text-center">
+          <div class="min-w-[280px] md:min-w-0 snap-center flex-shrink-0 rounded-xl p-6 bg-neutral-900/40 border border-white/5 hover:border-emerald-500/15 transition-colors group">
             <div class="text-3xl mb-4">{icon}</div>
-            <h4 class="text-lg font-bold text-white mb-2">{t(lang, `about.values.${key}`)}</h4>
-            <p class="text-sm text-neutral-400 leading-relaxed">{t(lang, `about.values.${key}Desc`)}</p>
+            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">{t(lang, `about.values.${key}`)}</h4>
+            <p class="text-neutral-400 text-sm leading-relaxed">{t(lang, `about.values.${key}Desc`)}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ===================== TECH STACK ===================== -->
-  <section class="py-24 bg-neutral-950/80 border-t border-white/5">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-white">{t(lang, 'about.techStack.title')}</h2>
-        <p class="text-neutral-400 mt-3">{t(lang, 'about.techStack.subtitle')}</p>
-      </div>
-
-      <div class="flex flex-wrap justify-center gap-4">
-        {['C# / .NET 10', 'ASP.NET Core', 'PostgreSQL', 'Kubernetes', 'Docker', 'RabbitMQ', 'React', 'Python / Odoo', 'FastAPI', 'OpenTelemetry'].map((tech) => (
-          <span class="px-5 py-2.5 rounded-xl bg-neutral-800/50 border border-white/5 text-sm text-neutral-300 font-mono hover:border-emerald-500/30 hover:text-emerald-300 transition-colors">
-            {tech}
-          </span>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== CTA ===================== -->
-  <section class="py-24 border-t border-white/5">
-    <div class="max-w-4xl mx-auto px-6 text-center">
+  <section class="relative py-24 overflow-hidden border-t border-white/5">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.05)_0%,transparent_70%)]" />
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-3xl md:text-5xl font-black text-white mb-6">{t(lang, 'cta.title')}</h2>
       <p class="text-lg text-neutral-300 max-w-2xl mx-auto mb-10">{t(lang, 'cta.subtitle')}</p>
-      <a href={tp('/contact')} class="btn-primary text-base px-8 py-4">{t(lang, 'cta.btn1')}</a>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href={tp('/contact')} class="btn-primary text-base px-8 py-4">{t(lang, 'cta.btn1')}</a>
+        <a href={tp('/leaf')} class="btn-secondary text-base px-8 py-4 border-white/10 text-white hover:border-emerald-400/50">{t(lang, 'cta.btn2')}</a>
+      </div>
     </div>
   </section>
 

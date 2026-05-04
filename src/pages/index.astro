@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { t, useTranslatedPath } from '@/i18n/utils';
-import { ConstellationNetwork } from '@/components/react/ConstellationNetwork';
-import { FlipText } from '@/components/react/FlipText';
+import { WordRotator } from '@/components/react/WordRotator';
 import { BorderBeam } from '@/components/react/BorderBeam';
 import { CountUp } from '@/components/react/CountUp';
+import { LiquidGradient } from '@/components/react/LiquidGradient';
+import { PerspectiveGrid } from '@/components/react/PerspectiveGrid';
 
 const lang = 'en';
 const tp = useTranslatedPath(lang);
@@ -14,13 +15,19 @@ const tp = useTranslatedPath(lang);
 
   <!-- ===================== HERO ===================== -->
   <section class="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
-    <div class="absolute inset-0 bg-[#0a0a0f]" />
-    <ConstellationNetwork client:load className="opacity-70" nodeCount={70} connectionDistance={140} />
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(10,10,15,0.9)_100%)]" />
+    <!-- Multi-layer animated background -->
+    <div class="absolute inset-0 bg-[#060a12]">
+      <div class="hero-orb-1" />
+      <div class="hero-orb-2" />
+      <div class="hero-orb-3" />
+    </div>
+    <LiquidGradient client:load className="opacity-30" />
+    <PerspectiveGrid client:visible className="absolute inset-0 opacity-40" gridSize={20} fadeRadius={65} />
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(6,10,18,0.85)_100%)]" />
 
     <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
       <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-sm mb-8">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 backdrop-blur-sm mb-8 animate-fade-in">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -29,23 +36,28 @@ const tp = useTranslatedPath(lang);
       </div>
 
       <!-- Main heading -->
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-2 leading-tight tracking-tight">
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-2 leading-tight tracking-tight animate-fade-in-up">
         {t(lang, 'hero.title')}
         <span class="gradient-text"> {t(lang, 'hero.titleHighlight')}</span>
       </h1>
 
-      <!-- FlipText effect -->
-      <div class="mb-8 h-16 md:h-20 flex items-center justify-center">
-        <FlipText client:load className="text-3xl md:text-5xl font-black text-emerald-400" duration={3} text="INNOVATE INTEGRATE AUTOMATE" />
+      <!-- Word rotator -->
+      <div class="mb-8 h-16 md:h-20">
+        <WordRotator
+          client:load
+          words={['INNOVATE', 'INTEGRATE', 'AUTOMATE', 'ACCELERATE', 'GROW']}
+          className="text-4xl md:text-6xl font-black text-emerald-400 tracking-tight"
+          interval={2400}
+        />
       </div>
 
       <!-- Subtitle -->
-      <p class="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+      <p class="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto mb-10 leading-relaxed animate-fade-in-up" style="animation-delay: 0.3s">
         {t(lang, 'hero.subtitle')}
       </p>
 
       <!-- CTAs -->
-      <div class="flex flex-wrap items-center justify-center gap-4">
+      <div class="flex flex-wrap items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.5s">
         <a href={tp('/leaf')} class="btn-primary text-base px-8 py-4">
           {t(lang, 'hero.cta1')}
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -56,6 +68,13 @@ const tp = useTranslatedPath(lang);
           {t(lang, 'hero.cta2')}
         </a>
       </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <svg class="w-5 h-5 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
     </div>
   </section>
 
@@ -63,20 +82,20 @@ const tp = useTranslatedPath(lang);
   <section class="relative py-16 border-y border-white/5 bg-neutral-950/50 backdrop-blur-sm">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div class="observe-animate">
+        <div>
           <div class="text-3xl md:text-4xl font-black text-white"><CountUp client:visible end={7} suffix="+" /></div>
           <p class="text-neutral-400 text-sm mt-2">Modules</p>
         </div>
-        <div class="observe-animate anim-delay-1">
-          <div class="text-3xl md:text-4xl font-black text-white"><CountUp client:visible end={99} suffix="%" /></div>
+        <div>
+          <div class="text-3xl md:text-4xl font-black text-emerald-400"><CountUp client:visible end={99} suffix="%" /></div>
           <p class="text-neutral-400 text-sm mt-2">Uptime SLA</p>
         </div>
-        <div class="observe-animate anim-delay-2">
+        <div>
           <div class="text-3xl md:text-4xl font-black text-white"><CountUp client:visible end={50} prefix="<" suffix="ms" /></div>
           <p class="text-neutral-400 text-sm mt-2">API Response</p>
         </div>
-        <div class="observe-animate anim-delay-3">
-          <div class="text-3xl md:text-4xl font-black text-white"><CountUp client:visible end={100} suffix="%" /></div>
+        <div>
+          <div class="text-3xl md:text-4xl font-black text-emerald-400"><CountUp client:visible end={100} suffix="%" /></div>
           <p class="text-neutral-400 text-sm mt-2">Made in Italy</p>
         </div>
       </div>
@@ -116,55 +135,51 @@ const tp = useTranslatedPath(lang);
     </div>
   </section>
 
-  <!-- ===================== LEAF PREVIEW ===================== -->
-  <section class="relative py-24 bg-neutral-950/80 border-t border-white/5">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-emerald-400 border border-emerald-500/20 bg-emerald-500/5 mb-4">
-          {t(lang, 'leaf.badge')}
-        </span>
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-2">
-          {t(lang, 'leaf.title')} <span class="gradient-text">{t(lang, 'leaf.titleHighlight')}</span> {t(lang, 'leaf.titleEnd')}
-        </h2>
-        <p class="text-neutral-400 mt-4 max-w-2xl mx-auto">{t(lang, 'leaf.subtitle')}</p>
+  <!-- ===================== LEAF TEASER ===================== -->
+  <section class="relative py-28 bg-neutral-950/80 border-t border-white/5 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.04)_0%,transparent_70%)]" />
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <!-- Leaf logo with glow ring -->
+      <div class="flex justify-center mb-8">
+        <div class="relative">
+          <div class="absolute inset-0 rounded-full blur-2xl scale-[2]" style="background: radial-gradient(circle, rgba(16,185,129,0.18) 0%, transparent 70%);" />
+          <div class="relative w-28 h-28 rounded-full border-2 border-emerald-500/25 bg-neutral-950/80 flex items-center justify-center shadow-[0_0_60px_rgba(16,185,129,0.15)]">
+            <img src="/leaf-logo.svg" alt="Leaf" class="w-16 h-16 object-contain" />
+          </div>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
-        {[
-          { key: 'rotor', color: 'bg-orange-400' },
-          { key: 'rootview', color: 'bg-blue-400' },
-          { key: 'fastoo', color: 'bg-emerald-400' },
-          { key: 'lawrf', color: 'bg-red-400' },
-          { key: 'elytra', color: 'bg-purple-400' },
-          { key: 'glide', color: 'bg-cyan-400' },
-          { key: 'verdanthr', color: 'bg-green-400' },
-        ].map(({ key, color }) => (
-          <div class="relative group rounded-2xl p-6 bg-neutral-900/50 border border-white/5 hover:border-emerald-500/30 transition-all duration-300 hover:bg-neutral-800/50">
-            <div class="flex items-center gap-3 mb-3">
-              <div class={`w-3 h-3 rounded-full ${color}`} />
-              <h4 class="font-bold text-white">{t(lang, `modules.${key}.name`)}</h4>
-              <span class="ml-auto text-xs px-2 py-0.5 rounded-full bg-white/5 text-neutral-400 border border-white/10">{t(lang, `modules.${key}.status`)}</span>
-            </div>
-            <p class="text-sm text-emerald-400/80 font-medium mb-2">{t(lang, `modules.${key}.tagline`)}</p>
-            <p class="text-sm text-neutral-400 leading-relaxed">{t(lang, `modules.${key}.description`)}</p>
-          </div>
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-emerald-400 border border-emerald-500/20 bg-emerald-500/5 mb-5">
+        {t(lang, 'leaf.badge')}
+      </span>
+      <h2 class="text-3xl md:text-5xl font-black text-white mb-5 leading-tight">
+        {t(lang, 'leaf.title')} <span class="gradient-text">{t(lang, 'leaf.titleHighlight')}</span> {t(lang, 'leaf.titleEnd')}
+      </h2>
+      <p class="text-neutral-400 max-w-2xl mx-auto leading-relaxed mb-8">
+        {t(lang, 'leaf.subtitle')}
+      </p>
+
+      <!-- Module pills -->
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        {['Rotor', 'RootView', 'FasToo', 'LawRF', 'Elytra', 'Glide', 'VerdantHR'].map((name) => (
+          <span class="px-4 py-1.5 rounded-full text-sm font-medium text-emerald-300 border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-400/40 transition-colors cursor-default">
+            {name}
+          </span>
         ))}
       </div>
 
-      <div class="text-center">
-        <a href={tp('/leaf')} class="btn-primary px-8 py-4">
-          Explore All Modules
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-        </a>
-      </div>
+      <a href={tp('/leaf')} class="btn-primary text-base px-8 py-4">
+        Explore Leaf
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
     </div>
   </section>
 
   <!-- ===================== CTA ===================== -->
   <section class="relative py-24 overflow-hidden border-t border-white/5">
-    <div class="absolute inset-0">
-      <ConstellationNetwork client:visible className="opacity-20" nodeCount={30} connectionDistance={200} interactive={false} />
-    </div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.05)_0%,transparent_70%)]" />
     <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-3xl md:text-5xl font-black text-white mb-6">{t(lang, 'cta.title')}</h2>
       <p class="text-lg text-neutral-300 max-w-2xl mx-auto mb-10">{t(lang, 'cta.subtitle')}</p>

@@ -132,18 +132,44 @@ const modules = [
     </div>
   </section>
 
-  <!-- ===================== WHAT IS LEAF ===================== -->
+  <!-- ===================== WHAT IS LEAF / BENEFITS ===================== -->
   <section class="py-24">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="relative rounded-2xl p-10 md:p-14 bg-gradient-to-br from-emerald-500/5 to-transparent border border-emerald-500/10 overflow-hidden">
-        <BorderBeam client:visible size={400} duration={20} />
-        <div class="flex items-start gap-6">
-          <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
-            <span class="text-3xl">🍃</span>
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <!-- Left: headline -->
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-emerald-400 bg-emerald-400/10 px-3 py-1.5 rounded-full mb-6">
+            {t(lang, 'leaf.benefits.tag')}
+          </span>
+          <h2 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            {t(lang, 'leaf.benefits.headline')}<br />
+            <span class="gradient-text">{t(lang, 'leaf.benefits.headlineHighlight')}</span>
+          </h2>
+          <p class="text-neutral-400 text-lg leading-relaxed">
+            {t(lang, 'leaf.whatIs.description')}
+          </p>
+        </div>
+        <!-- Right: 2x2 stat cards -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-2xl p-6 border border-emerald-500/10 bg-emerald-500/5">
+            <div class="text-3xl font-black text-emerald-400 mb-1">{t(lang, 'leaf.benefits.stat1')}</div>
+            <div class="text-sm font-bold text-white mb-2">{t(lang, 'leaf.benefits.stat1Label')}</div>
+            <p class="text-xs text-neutral-400 leading-relaxed">{t(lang, 'leaf.benefits.stat1Desc')}</p>
           </div>
-          <div>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">{t(lang, 'leaf.whatIs.title')}</h2>
-            <p class="text-neutral-300 leading-relaxed text-lg">{t(lang, 'leaf.whatIs.description')}</p>
+          <div class="rounded-2xl p-6 border border-blue-500/10 bg-blue-500/5">
+            <div class="text-3xl font-black text-blue-400 mb-1">{t(lang, 'leaf.benefits.stat2')}</div>
+            <div class="text-sm font-bold text-white mb-2">{t(lang, 'leaf.benefits.stat2Label')}</div>
+            <p class="text-xs text-neutral-400 leading-relaxed">{t(lang, 'leaf.benefits.stat2Desc')}</p>
+          </div>
+          <div class="rounded-2xl p-6 border border-amber-500/10 bg-amber-500/5">
+            <div class="text-3xl font-black text-amber-400 mb-1">{t(lang, 'leaf.benefits.stat3')}</div>
+            <div class="text-sm font-bold text-white mb-2">{t(lang, 'leaf.benefits.stat3Label')}</div>
+            <p class="text-xs text-neutral-400 leading-relaxed">{t(lang, 'leaf.benefits.stat3Desc')}</p>
+          </div>
+          <div class="rounded-2xl p-6 border border-purple-500/10 bg-purple-500/5">
+            <div class="text-3xl font-black text-purple-400 mb-1">{t(lang, 'leaf.benefits.stat4')}</div>
+            <div class="text-sm font-bold text-white mb-2">{t(lang, 'leaf.benefits.stat4Label')}</div>
+            <p class="text-xs text-neutral-400 leading-relaxed">{t(lang, 'leaf.benefits.stat4Desc')}</p>
           </div>
         </div>
       </div>
@@ -169,29 +195,64 @@ const modules = [
     </div>
   </section>
 
-  <!-- ===================== SYNERGY ===================== -->
+  <!-- ===================== COMPARISON ===================== -->
   <section class="py-24 bg-neutral-950/80 border-t border-white/5">
     <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">{t(lang, 'leaf.synergy.title')}</h2>
-        <p class="text-lg text-neutral-300 max-w-3xl mx-auto leading-relaxed">{t(lang, 'leaf.synergy.description')}</p>
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4">
+          {t(lang, 'leaf.comparison.title')}
+          <span class="gradient-text"> {t(lang, 'leaf.comparison.titleHighlight')}</span>
+        </h2>
+        <p class="text-neutral-400 max-w-2xl mx-auto">{t(lang, 'leaf.comparison.subtitle')}</p>
       </div>
 
-      <div class="mt-16 grid md:grid-cols-3 gap-6 text-center">
-        <div class="rounded-2xl p-8 bg-neutral-900/30 border border-white/5">
-          <div class="text-4xl mb-4">🔗</div>
-          <h4 class="text-lg font-bold text-white mb-2">Event-Driven</h4>
-          <p class="text-sm text-neutral-400">Modules communicate through domain events. No direct dependencies, full traceability.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Without Leaf -->
+        <div class="rounded-2xl border border-red-500/15 overflow-hidden">
+          <div class="px-6 py-4 bg-red-500/8 border-b border-red-500/15">
+            <h3 class="font-bold text-red-400 flex items-center gap-2">
+              <span>⚠</span> {t(lang, 'leaf.comparison.withoutTitle')}
+            </h3>
+          </div>
+          <div class="divide-y divide-white/5">
+            {[
+              lang === 'en' ? '5–8 hours/week on manual reconciliation'    : '5–8 ore/settimana di riconciliazione manuale',
+              lang === 'en' ? '4+ disconnected tools to manage'             : '4+ strumenti disconnessi da gestire',
+              lang === 'en' ? 'Reports only ready at end of month'          : 'Report pronti solo a fine mese',
+              lang === 'en' ? 'Constant data sync failures'                 : 'Errori continui di sincronizzazione dati',
+              lang === 'en' ? 'Data silos per department'                   : 'Silos di dati per reparto',
+              lang === 'en' ? 'Year-end reconciliation panic'               : 'Panico da riconciliazione di fine anno',
+            ].map((item, i) => (
+              <div class="px-6 py-4 flex items-center gap-3">
+                <span class="text-red-400 text-lg flex-shrink-0">✕</span>
+                <span class="text-neutral-400 text-sm">{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <div class="rounded-2xl p-8 bg-neutral-900/30 border border-white/5">
-          <div class="text-4xl mb-4">🏗️</div>
-          <h4 class="text-lg font-bold text-white mb-2">Microservices</h4>
-          <p class="text-sm text-neutral-400">Each module runs independently on Kubernetes. Scale what you need, when you need it.</p>
-        </div>
-        <div class="rounded-2xl p-8 bg-neutral-900/30 border border-white/5">
-          <div class="text-4xl mb-4">🔒</div>
-          <h4 class="text-lg font-bold text-white mb-2">Multi-Tenant</h4>
-          <p class="text-sm text-neutral-400">Shared infrastructure, isolated data. Every query is scoped to your organization.</p>
+
+        <!-- With Leaf -->
+        <div class="rounded-2xl border border-emerald-500/20 overflow-hidden">
+          <div class="px-6 py-4 bg-emerald-500/8 border-b border-emerald-500/20">
+            <h3 class="font-bold text-emerald-400 flex items-center gap-2">
+              <span>✓</span> {t(lang, 'leaf.comparison.withTitle')}
+            </h3>
+          </div>
+          <div class="divide-y divide-white/5">
+            {[
+              lang === 'en' ? 'Automated sync — zero manual work'          : 'Sincronizzazione automatica — zero lavoro manuale',
+              lang === 'en' ? '1 unified workspace for everything'          : '1 workspace unificato per tutto',
+              lang === 'en' ? 'Live dashboards and KPIs, any time'         : 'Dashboard e KPI live, in qualsiasi momento',
+              lang === 'en' ? 'Event-driven reliability, self-healing'      : 'Affidabilità event-driven, auto-ripristino',
+              lang === 'en' ? 'All departments connected and in sync'       : 'Tutti i reparti connessi e sincronizzati',
+              lang === 'en' ? 'Continuous data consistency, always'         : 'Dati sempre coerenti, senza sorprese',
+            ].map((item, i) => (
+              <div class="px-6 py-4 flex items-center gap-3">
+                <span class="text-emerald-400 text-lg flex-shrink-0">✓</span>
+                <span class="text-neutral-300 text-sm">{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
