@@ -2,10 +2,18 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { t, useTranslatedPath } from '@/i18n/utils';
 import { WordRotator } from '@/components/react/WordRotator';
-import { BorderBeam } from '@/components/react/BorderBeam';
-import { CountUp } from '@/components/react/CountUp';
 import { LiquidGradient } from '@/components/react/LiquidGradient';
 import { PerspectiveGrid } from '@/components/react/PerspectiveGrid';
+import { ScrollReveal } from '@/components/react/ScrollReveal';
+import { ToolChaosGrid } from '@/components/react/ToolChaosGrid';
+import { AnimatedDoomLoop } from '@/components/react/AnimatedDoomLoop';
+import { CostReveal } from '@/components/react/CostReveal';
+import { ConnectionFlow } from '@/components/react/ConnectionFlow';
+import { ConstellationNetwork } from '@/components/react/ConstellationNetwork';
+import { FlipFadeText } from '@/components/react/FlipFadeText';
+import { BorderBeam } from '@/components/react/BorderBeam';
+import { ImpactMetrics } from '@/components/react/ImpactMetrics';
+import { ChaosCounter } from '@/components/react/ChaosCounter';
 
 const lang = 'en';
 const tp = useTranslatedPath(lang);
@@ -15,7 +23,6 @@ const tp = useTranslatedPath(lang);
 
   <!-- ===================== HERO ===================== -->
   <section class="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
-    <!-- Multi-layer animated background -->
     <div class="absolute inset-0 bg-[#060a12]">
       <div class="hero-orb-1" />
       <div class="hero-orb-2" />
@@ -35,19 +42,19 @@ const tp = useTranslatedPath(lang);
         <span class="text-sm text-emerald-300 font-medium">{t(lang, 'hero.badge')}</span>
       </div>
 
-      <!-- Main heading -->
+      <!-- Main heading with animated text -->
       <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-2 leading-tight tracking-tight animate-fade-in-up">
         {t(lang, 'hero.title')}
         <span class="gradient-text"> {t(lang, 'hero.titleHighlight')}</span>
       </h1>
 
-      <!-- Word rotator -->
+      <!-- Rotating pain stats -->
       <div class="mb-8 h-16 md:h-20">
         <WordRotator
           client:load
-          words={['INNOVATE', 'INTEGRATE', 'AUTOMATE', 'ACCELERATE', 'GROW']}
-          className="text-4xl md:text-6xl font-black text-emerald-400 tracking-tight"
-          interval={2400}
+          words={['6 TOOLS. 0 CONNECTIONS.', '8 HOURS LOST / WEEK.', '\u20ac28K BURNED / YEAR.', 'COMPLEXITY KILLS GROWTH.', '1 SOLUTION.']}
+          className="text-3xl md:text-5xl lg:text-6xl font-black text-red-400 tracking-tight"
+          interval={2800}
         />
       </div>
 
@@ -64,129 +71,327 @@ const tp = useTranslatedPath(lang);
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </a>
-        <a href={tp('/contact')} class="btn-secondary text-base px-8 py-4 border-white/10 text-white hover:border-emerald-400/50">
+        <a href="#chaos" class="btn-secondary text-base px-8 py-4 border-white/10 text-white hover:border-emerald-400/50">
           {t(lang, 'hero.cta2')}
         </a>
       </div>
 
       <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg class="w-5 h-5 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span class="text-[10px] uppercase tracking-widest text-neutral-600 font-semibold">Scroll</span>
+        <div class="w-px h-8 bg-gradient-to-b from-neutral-600 to-transparent animate-pulse" />
       </div>
     </div>
   </section>
 
-  <!-- ===================== STATS BAR ===================== -->
-  <section class="relative py-16 border-y border-white/5 bg-neutral-950/50 backdrop-blur-sm">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div>
-          <div class="text-3xl md:text-4xl font-black text-white"><CountUp client:visible end={7} suffix="+" /></div>
-          <p class="text-neutral-400 text-sm mt-2">Modules</p>
-        </div>
-        <div>
-          <div class="text-3xl md:text-4xl font-black text-emerald-400"><CountUp client:visible end={2} suffix="+" /></div>
-          <p class="text-neutral-400 text-sm mt-2">Clients</p>
-        </div>
-        <div>
-          <div class="text-3xl md:text-4xl font-black text-white">5–8h</div>
-          <p class="text-neutral-400 text-sm mt-2">Saved per week</p>
-        </div>
-        <div>
-          <div class="text-3xl md:text-4xl font-black text-emerald-400"><CountUp client:visible end={100} suffix="%" /></div>
-          <p class="text-neutral-400 text-sm mt-2">Made in Italy</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ===================== CHAOS WALL ===================== -->
+  <section id="chaos" class="relative py-24 md:py-32 border-t border-white/5 overflow-hidden">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 30%, rgba(239,68,68,0.06) 0%, transparent 60%);" />
+    <div class="relative max-w-6xl mx-auto px-6">
 
-  <!-- ===================== SERVICES OVERVIEW ===================== -->
-  <section class="py-24">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-emerald-400 border border-emerald-500/20 bg-emerald-500/5 mb-4">
-          {t(lang, 'services.badge')}
-        </span>
-        <h2 class="text-3xl md:text-5xl font-bold text-white">
-          {t(lang, 'services.title')} <span class="gradient-text">{t(lang, 'services.titleHighlight')}</span>
+      <ScrollReveal client:visible className="text-center mb-16">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-red-400/60 mb-4">Your current reality</p>
+        <h2 class="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
+          Every tool you add<br/><span style="color: #ef4444;">multiplies the chaos.</span>
         </h2>
-        <p class="text-neutral-400 mt-4 max-w-2xl mx-auto">{t(lang, 'services.subtitle')}</p>
-      </div>
+        <p class="text-neutral-500 text-sm max-w-lg mx-auto">The average SME runs 6+ disconnected tools. Each one adds complexity, kills focus, and bleeds productivity.</p>
+      </ScrollReveal>
 
-      <div class="grid md:grid-cols-2 gap-6">
-        {[
-          { key: 'consulting', icon: 'M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5', color: 'emerald', delay: 0 },
-          { key: 'development', icon: 'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5', color: 'cyan', delay: 3 },
-          { key: 'leaf', icon: 'M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L12 12.75 6.429 9.75m11.142 0l4.179 2.25L12 17.25 2.25 12l4.179-2.25', color: 'green', delay: 6 },
-          { key: 'support', icon: 'M16.712 4.33a9.027 9.027 0 011.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 00-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 010 9.424m-1.306 1.652a9.027 9.027 0 01-1.652 1.306m0 0l-3.448-4.138m3.448 4.138a9.014 9.014 0 01-9.424 0m-1.652-1.306a9.027 9.027 0 01-1.306-1.652m0 0l4.138-3.448M4.33 16.712a9.014 9.014 0 010-9.424m4.138 3.448L4.33 7.288', color: 'purple', delay: 9 },
-        ].map(({ key, icon, color, delay }) => (
-          <div class="relative rounded-2xl p-8 bg-neutral-900/60 border border-white/5 backdrop-blur-sm overflow-hidden group hover:border-emerald-500/20 transition-colors duration-500">
-            <BorderBeam client:visible size={250} duration={12} delay={delay} />
-            <div class={`w-12 h-12 rounded-xl bg-${color}-500/10 flex items-center justify-center mb-5`}>
-              <svg class={`w-6 h-6 text-${color}-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d={icon} /></svg>
+      <!-- Interactive tool chaos visualization -->
+      <ScrollReveal client:visible delay={0.3}>
+        <ToolChaosGrid
+          client:visible
+          questionText="And how many exchange data automatically?"
+          punchlineText="0"
+          captionText="Every data transfer is manual. Every month-end is a reconciliation marathon. Every decision is based on yesterday's numbers."
+          className="max-w-3xl mx-auto"
+        />
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- ===================== COST REALITY ===================== -->
+  <section class="relative py-20 md:py-28 border-t border-white/5 overflow-hidden">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 50%, rgba(239,68,68,0.03) 0%, transparent 50%);" />
+    <div class="max-w-5xl mx-auto px-6">
+      <ScrollReveal client:visible className="text-center mb-14">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500 mb-4">The real cost</p>
+        <h2 class="text-2xl md:text-4xl font-black text-white">
+          This is what fragmentation <span style="color: #ef4444;">actually costs</span> you.
+        </h2>
+      </ScrollReveal>
+
+      <CostReveal
+        client:visible
+        stats={[
+          { value: '6.4', numericValue: 6.4, suffix: '', label: 'disconnected tools per SME, on average', color: '#ffffff' },
+          { value: '€28K+', numericValue: 28, prefix: '€', suffix: 'K+', label: 'burned in annual software subscriptions', color: '#ef4444' },
+          { value: '8h', numericValue: 8, suffix: 'h', label: 'lost every single week to manual data work', color: '#ffffff' },
+        ]}
+      />
+
+      <!-- Extra punch -->
+      <ScrollReveal client:visible delay={0.6}>
+        <div class="relative mt-16 p-8 rounded-2xl border border-red-500/10 bg-red-500/[0.02] text-center overflow-hidden">
+          <BorderBeam client:visible colorFrom="#ef4444" colorTo="#f97316" size={300} duration={8} />
+          <p class="text-neutral-400 text-sm leading-relaxed max-w-2xl mx-auto">
+            That's <strong class="text-white">€28,000/year</strong> in subscriptions, <strong class="text-white">416 hours/year</strong> in manual data work, and
+            <strong class="text-white">zero real-time visibility</strong> on your margins. Your competitors who've figured this out? They already know their numbers <em>today</em>.
+          </p>
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- ===================== DOOM LOOP ===================== -->
+  <section class="relative py-24 md:py-32 border-t border-white/5 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6">
+      <ScrollReveal client:visible className="text-center mb-8">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500 mb-4">The pattern</p>
+        <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">
+          The complexity trap you <span class="text-red-400">can't</span> escape.
+        </h2>
+        <p class="text-neutral-500 text-sm mt-4 max-w-lg mx-auto">Every company we talk to is stuck in the same cycle. More tools, more complexity, less focus.</p>
+      </ScrollReveal>
+
+      <AnimatedDoomLoop
+        client:visible
+        steps={[
+          { label: 'Complexity grows. Focus drops.', sublabel: 'Too many tools, too many logins, too many processes.' },
+          { label: 'You buy another tool to fix it.', sublabel: '"This time it will connect everything."' },
+          { label: 'More fragmentation. More chaos.', sublabel: 'Higher cost. More manual work. Same problem.' },
+        ]}
+        loopBackLabel="Repeat. Every quarter. Indefinitely."
+        bottomText="Adding tools doesn't reduce complexity."
+        bottomHighlight="Connecting them does."
+      />
+    </div>
+  </section>
+
+  <!-- ===================== THE PIVOT ===================== -->
+  <section class="relative py-28 md:py-36 overflow-hidden border-t border-white/5">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.08)_0%,transparent_60%)]" />
+    <!-- Subtle grid background -->
+    <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(16,185,129,1) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,1) 1px, transparent 1px); background-size: 40px 40px;" />
+
+    <div class="relative max-w-4xl mx-auto px-6 text-center">
+      <ScrollReveal client:visible>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-500/60 mb-8">The shift</p>
+      </ScrollReveal>
+
+      <ScrollReveal client:visible delay={0.2}>
+        <h2 class="font-black leading-[0.95] mb-8 tracking-tight" style="font-size: clamp(2.8rem, 8vw, 6rem);">
+          <span class="text-neutral-600 line-through decoration-neutral-700 decoration-2">Stop adding.</span><br/>
+          <span class="gradient-text">Start connecting.</span>
+        </h2>
+      </ScrollReveal>
+
+      <ScrollReveal client:visible delay={0.4}>
+        <p class="text-lg md:text-xl text-neutral-400 max-w-xl mx-auto leading-relaxed">
+          You don't need another tool in your stack.<br/>
+          You need <strong class="text-white">the layer that makes your existing tools finally work together.</strong>
+        </p>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <!-- ===================== LEAF REVEAL ===================== -->
+  <section class="relative py-28 md:py-36 bg-neutral-950/80 border-t border-white/5 overflow-hidden">
+    <!-- Constellation background -->
+    <div class="absolute inset-0 opacity-20">
+      <ConstellationNetwork
+        client:visible
+        nodeCount={40}
+        connectionDistance={180}
+        nodeColor="rgba(16, 185, 129, 0.5)"
+        lineColor="rgba(16, 185, 129,"
+        interactive={false}
+      />
+    </div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.06)_0%,transparent_70%)]" />
+
+    <div class="relative z-10 max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Left: Text content -->
+        <div>
+          <ScrollReveal client:visible>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400/70 mb-6">Introducing Leaf</p>
+          </ScrollReveal>
+          <ScrollReveal client:visible delay={0.15}>
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-5 leading-tight">
+              One integration layer.<br/>
+              <span class="gradient-text">Every system, connected.</span>
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal client:visible delay={0.3}>
+            <p class="text-neutral-400 leading-relaxed mb-8">
+              Leaf doesn't replace what you have. It connects it.
+              Your ERP, HR system, CRM, and accounting tools — finally talking to each other. In real time. Automatically.
+            </p>
+          </ScrollReveal>
+
+          <!-- Module pills -->
+          <ScrollReveal client:visible delay={0.45}>
+            <div class="flex flex-wrap gap-2 mb-8">
+              {['Rotor', 'RootView', 'FasToo', 'LawRF', 'Elytra', 'Glide', 'VerdantHR'].map((name) => (
+                <span class="px-4 py-1.5 rounded-full text-sm font-medium text-emerald-300 border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-400/40 transition-colors cursor-default">
+                  {name}
+                </span>
+              ))}
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">{t(lang, `services.${key}.title`)}</h3>
-            <p class="text-neutral-400 text-sm leading-relaxed">{t(lang, `services.${key}.description`)}</p>
-          </div>
-        ))}
+          </ScrollReveal>
+
+          <ScrollReveal client:visible delay={0.6}>
+            <a href={tp('/leaf')} class="btn-primary text-base px-8 py-4 inline-flex">
+              Explore Leaf
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </ScrollReveal>
+        </div>
+
+        <!-- Right: Animated connection diagram -->
+        <ScrollReveal client:visible delay={0.3} direction="right">
+          <ConnectionFlow
+            client:visible
+            centerLabel="Leaf"
+            systemNames={['ERP', 'HR', 'CRM', 'Accounting', 'Invoicing', 'Analytics']}
+          />
+        </ScrollReveal>
       </div>
     </div>
   </section>
 
-  <!-- ===================== LEAF TEASER ===================== -->
-  <section class="relative py-28 bg-neutral-950/80 border-t border-white/5 overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.04)_0%,transparent_70%)]" />
-    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-      <!-- Leaf logo with glow ring -->
-      <div class="flex justify-center mb-8">
-        <div class="relative">
-          <div class="absolute inset-0 rounded-full blur-2xl scale-[2]" style="background: radial-gradient(circle, rgba(16,185,129,0.18) 0%, transparent 70%);" />
-          <div class="relative w-28 h-28 rounded-full border-2 border-emerald-500/25 bg-neutral-950/80 flex items-center justify-center shadow-[0_0_60px_rgba(16,185,129,0.15)]">
-            <img src="/leaf-logo.svg" alt="Leaf" class="w-16 h-16 object-contain" />
+  <!-- ===================== BEFORE / AFTER ===================== -->
+  <section class="relative py-20 md:py-28 border-t border-white/5 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6">
+      <ScrollReveal client:visible className="text-center mb-14">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500 mb-4">The difference</p>
+        <h2 class="text-2xl md:text-4xl font-black text-white">
+          Monday morning. <span class="gradient-text">With and without Leaf.</span>
+        </h2>
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- WITHOUT -->
+        <ScrollReveal client:visible delay={0.1}>
+          <div class="relative rounded-2xl p-8 border border-red-500/10 bg-red-500/[0.02] overflow-hidden h-full">
+            <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/40 to-transparent" />
+            <div class="flex items-center gap-2 mb-6">
+              <div class="w-2 h-2 rounded-full bg-red-500" />
+              <span class="text-red-400 text-xs font-bold uppercase tracking-widest">Without Leaf</span>
+            </div>
+            <ul class="space-y-4">
+              {[
+                'Open Zucchetti. Export CSV. Open Excel.',
+                'Cross-reference invoices with accounting manually.',
+                'Ask HR for payroll data. Wait for the email.',
+                'Build the monthly report from 4 different sources.',
+                'Discover a €12K discrepancy at 5pm Friday.',
+                'Spend the weekend fixing it.',
+              ].map((item) => (
+                <li class="flex items-start gap-3 text-sm text-neutral-400">
+                  <svg class="w-4 h-4 mt-0.5 text-red-500/60 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-6 pt-4 border-t border-red-500/10">
+              <span class="text-red-400 text-xs font-bold">Time spent: ~4 hours</span>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
+
+        <!-- WITH -->
+        <ScrollReveal client:visible delay={0.3}>
+          <div class="relative rounded-2xl p-8 border border-emerald-500/15 bg-emerald-500/[0.02] overflow-hidden h-full">
+            <BorderBeam client:visible size={250} duration={12} />
+            <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
+            <div class="flex items-center gap-2 mb-6">
+              <div class="w-2 h-2 rounded-full bg-emerald-500" />
+              <span class="text-emerald-400 text-xs font-bold uppercase tracking-widest">With Leaf</span>
+            </div>
+            <ul class="space-y-4">
+              {[
+                'Open dashboard. Everything is already there.',
+                'Invoices, payroll, accounting — synced in real-time.',
+                'Margins by cost center? Live. Updated 10 seconds ago.',
+                'Monthly report? Auto-generated. Waiting in your inbox.',
+                'Discrepancies? Flagged automatically on day one.',
+                'Monday, 9:07am. Coffee is still warm.',
+              ].map((item) => (
+                <li class="flex items-start gap-3 text-sm text-neutral-300">
+                  <svg class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-6 pt-4 border-t border-emerald-500/10">
+              <span class="text-emerald-400 text-xs font-bold">Time spent: 0 minutes</span>
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
+    </div>
+  </section>
 
-      <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase text-emerald-400 border border-emerald-500/20 bg-emerald-500/5 mb-5">
-        {t(lang, 'leaf.badge')}
-      </span>
-      <h2 class="text-3xl md:text-5xl font-black text-white mb-5 leading-tight">
-        {t(lang, 'leaf.title')} <span class="gradient-text">{t(lang, 'leaf.titleHighlight')}</span> {t(lang, 'leaf.titleEnd')}
-      </h2>
-      <p class="text-neutral-400 max-w-2xl mx-auto leading-relaxed mb-8">
-        {t(lang, 'leaf.subtitle')}
-      </p>
+  <!-- ===================== WHAT CHANGES ===================== -->
+  <section class="relative py-20 md:py-28 border-t border-white/5 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.04)_0%,transparent_60%)]" />
+    <div class="relative max-w-5xl mx-auto px-6">
+      <ScrollReveal client:visible className="text-center mb-14">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-500/50 mb-4">The impact</p>
+        <h2 class="text-2xl md:text-4xl font-black text-white mb-4">
+          What changes when everything <span class="gradient-text">connects</span>
+        </h2>
+      </ScrollReveal>
 
-      <!-- Module pills -->
-      <div class="flex flex-wrap justify-center gap-3 mb-10">
-        {['Rotor', 'RootView', 'FasToo', 'LawRF', 'Elytra', 'Glide', 'VerdantHR'].map((name) => (
-          <span class="px-4 py-1.5 rounded-full text-sm font-medium text-emerald-300 border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-400/40 transition-colors cursor-default">
-            {name}
-          </span>
-        ))}
-      </div>
-
-      <a href={tp('/leaf')} class="btn-primary text-base px-8 py-4">
-        Explore Leaf
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
-      </a>
+      <ImpactMetrics
+        client:visible
+        benefits={[
+          {
+            icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+            title: 'Decisions powered by real-time data, not last month\'s spreadsheet.',
+            metric: 'Real-time',
+            metricLabel: 'visibility on margins',
+            color: '#10b981',
+          },
+          {
+            icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+            title: 'Your team stops copying data and starts doing real work.',
+            metric: '+8h/week',
+            metricLabel: 'reclaimed per person',
+            color: '#06b6d4',
+          },
+          {
+            icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+            title: 'Every sync guaranteed. Every event tracked. Zero data loss.',
+            metric: '0 errors',
+            metricLabel: 'in data synchronization',
+            color: '#8b5cf6',
+          },
+        ]}
+      />
     </div>
   </section>
 
   <!-- ===================== CTA ===================== -->
-  <section class="relative py-24 overflow-hidden border-t border-white/5">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.05)_0%,transparent_70%)]" />
+  <section class="relative py-24 md:py-32 overflow-hidden border-t border-white/5">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(16,185,129,0.06)_0%,transparent_70%)]" />
+    <div class="absolute inset-0 opacity-[0.015]" style="background-image: linear-gradient(rgba(16,185,129,1) 1px, transparent 1px), linear-gradient(90deg, rgba(16,185,129,1) 1px, transparent 1px); background-size: 60px 60px;" />
+
     <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-5xl font-black text-white mb-6">{t(lang, 'cta.title')}</h2>
-      <p class="text-lg text-neutral-300 max-w-2xl mx-auto mb-10">{t(lang, 'cta.subtitle')}</p>
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href={tp('/contact')} class="btn-primary text-base px-8 py-4">{t(lang, 'cta.btn1')}</a>
-        <a href={tp('/leaf')} class="btn-secondary text-base px-8 py-4 border-white/10 text-white hover:border-emerald-400/50">{t(lang, 'cta.btn2')}</a>
-      </div>
+      <ScrollReveal client:visible>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-500/50 mb-6">Ready?</p>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-6">{t(lang, 'cta.title')}</h2>
+        <p class="text-lg text-neutral-300 max-w-2xl mx-auto mb-10">{t(lang, 'cta.subtitle')}</p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href={tp('/contact')} class="btn-primary text-base px-8 py-4">{t(lang, 'cta.btn1')}</a>
+          <a href={tp('/leaf')} class="btn-secondary text-base px-8 py-4 border-white/10 text-white hover:border-emerald-400/50">{t(lang, 'cta.btn2')}</a>
+        </div>
+      </ScrollReveal>
     </div>
   </section>
 
