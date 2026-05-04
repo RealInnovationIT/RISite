@@ -10,18 +10,18 @@ export const translations = {
       contact: 'Contact',
     },
     hero: {
-      badge: 'Building the Future of Business Software',
-      title: 'Intelligent Software',
-      titleHighlight: 'Solutions',
-      titleEnd: 'for Modern Enterprises',
+      badge: 'Architecture & Integration for Italian Business',
+      title: 'Your Systems Are',
+      titleHighlight: 'Fragmented.',
+      titleEnd: 'We Build the Fix.',
       subtitle: 'We design and build modular, scalable software ecosystems that unify your operations — from accounting to HR, CRM to workflow management.',
       cta1: 'Discover Leaf',
       cta2: 'Get in Touch',
     },
     services: {
       badge: 'What We Do',
-      title: 'How We Help Businesses',
-      titleHighlight: 'Scale',
+      title: 'From Architecture',
+      titleHighlight: 'to Production',
       subtitle: 'Specialized consulting across the full software lifecycle — from architecture to production deployment.',
       consulting: {
         title: 'Software Consulting & Architecture',
@@ -31,7 +31,7 @@ export const translations = {
       },
       development: {
         title: 'Custom Software Development',
-        description: 'Bespoke solutions built with modern technologies. Full-stack development, API integrations, and complete digital products.',
+        description: 'When off-the-shelf tools don\'t match your process, we build what does. Full-stack development, API integrations, and production-ready products — with long-term maintainability as a first-class concern.',
         solves: 'Off-the-shelf software that doesn\'t fit your process. We build exactly what you need — no more, no less.',
         how: 'Agile development, continuous delivery, automated testing. From prototype to production in weeks, not months.',
       },
@@ -43,7 +43,7 @@ export const translations = {
       },
       support: {
         title: 'Ongoing Support & Evolution',
-        description: 'SLA-based support, monitoring, updates, and continuous improvement. We grow with your business.',
+        description: 'SLA-backed support, proactive monitoring, structured updates, and continuous improvement. Your system stays operational and coherent as your business evolves.',
         solves: 'Systems that degrade over time. We keep your software running, evolving, and performing at peak levels.',
         how: 'Dedicated support engineers, proactive monitoring, quarterly reviews, and feature evolution based on your feedback.',
       },
@@ -51,8 +51,8 @@ export const translations = {
     leaf: {
       badge: 'Our Core Product',
       title: 'One Suite.',
-      titleHighlight: 'Every Module.',
-      titleEnd: 'Total Control.',
+      titleHighlight: 'Total Control.',
+      titleEnd: '',
       subtitle: 'Stop managing software. Start managing your business. Leaf connects every tool, automates every workflow, and puts real-time insights at your fingertips — so your team can focus on decisions, not plumbing.',
       whatIs: {
         title: 'What is Leaf?',
@@ -162,17 +162,17 @@ export const translations = {
     },
     about: {
       badge: 'About Us',
-      title: 'Building the',
-      titleHighlight: 'Next Generation',
-      titleEnd: 'of Business Software',
-      subtitle: 'We\'re not another software company. We\'re building the operating system for Italian SMEs — modular, event-driven, and designed to scale.',
+      title: 'We Design',
+      titleHighlight: 'Integration Systems,',
+      titleEnd: 'Not Just Software.',
+      subtitle: 'RealInnovation is a software architecture firm. We design event-driven platforms, build integration layers between existing systems, and eliminate the operational fragmentation that costs Italian SMEs thousands of hours per year.',
       mission: {
         title: 'Our Mission',
-        description: 'To eliminate fragmented software landscapes. We build unified ecosystems where every tool speaks the same language — one platform, infinite possibilities.',
+        description: 'To eliminate operational fragmentation. Italian businesses running on disconnected tools lose visibility, time, and money. We build the integration layer that restores control.',
       },
       vision: {
         title: 'Our Vision',
-        description: 'Become the reference partner for Italian SMEs seeking digital transformation — not just as software vendors, but as a full-service technology partner using our own tools.',
+        description: 'To become the system design partner of choice for Italian SMEs. Not as another vendor in the stack — as the team that makes the entire stack coherent and maintainable.',
       },
       problem: {
         title: 'The Problem',
@@ -200,10 +200,10 @@ export const translations = {
       },
       whyUs: {
         title: 'Why RealInnovation',
-        subtitle: 'We combine deep domain expertise with modern engineering to deliver results that matter.',
+        subtitle: 'We understand the accounting, HR, and compliance constraints of Italian business. We design systems around those constraints — not despite them.',
         engineering: {
           title: 'Engineering Excellence',
-          description: 'Domain-Driven Design, event-driven architecture, microservices on Kubernetes. We don\'t just write code — we architect systems that scale.',
+          description: 'Domain-Driven Design, event-driven architecture, containerized microservices. We model business complexity directly in code — so the system reflects your domain, not just your requirements.',
         },
         domain: {
           title: 'Domain Expertise',
@@ -220,14 +220,14 @@ export const translations = {
       },
       stats: {
         modules: 'Modules in Ecosystem',
-        uptime: 'Uptime SLA',
-        response: 'API Response',
+        clients: 'Clients',
+        saved: 'Saved per week',
         italy: 'Made in Italy',
       },
       values: {
         title: 'What Drives Us',
         innovation: 'Innovation',
-        innovationDesc: 'We push boundaries with cutting-edge architecture and modern patterns.',
+        innovationDesc: 'We apply proven architectural patterns to complex problems. Not trends — approaches that remain maintainable as systems grow.',
         reliability: 'Reliability',
         reliabilityDesc: 'Event-driven, fault-tolerant systems you can depend on.',
         simplicity: 'Simplicity',
@@ -249,7 +249,7 @@ export const translations = {
       title: 'Simple,',
       titleHighlight: 'Transparent',
       titleEnd: 'Pricing',
-      subtitle: 'Choose the plan that fits your business. Scale up or down as you grow.',
+      subtitle: 'Transparent pricing for every stage of your integration journey. Start with one module, expand as your needs grow.',
       starter: {
         name: 'Starter',
         price: '€49',
@@ -289,8 +289,8 @@ export const translations = {
     },
     contact: {
       badge: 'Get in Touch',
-      title: "Let's Build Something",
-      titleHighlight: 'Together',
+      title: 'Let\'s Build Something',
+      titleHighlight: 'Together.',
       subtitle: 'Whether you need a technical partner, a modular solution, or a complete digital transformation — we are here to help.',
       form: {
         name: 'Full Name',
@@ -298,7 +298,7 @@ export const translations = {
         company: 'Company',
         interest: 'I am interested in...',
         interestOptions: ['Software Consulting', 'Leaf Suite', 'Custom Development', 'Partnership', 'Other'],
-        message: 'Tell us about your project',
+        message: 'Describe your systems and where they break down',
         submit: 'Send Message',
       },
       info: {
@@ -316,7 +316,7 @@ export const translations = {
       readMore: 'Read More',
     },
     footer: {
-      description: 'Modular software solutions for modern enterprises. Built with passion in Italy.',
+      description: 'System integration and software architecture for Italian SMEs. Built in Italy, for Italian business.',
       navigation: 'Navigation',
       products: 'Products',
       connect: 'Connect',
@@ -324,8 +324,8 @@ export const translations = {
       builtWith: 'Built with Astro & Tailwind CSS',
     },
     cta: {
-      title: 'Ready to Transform Your Business?',
-      subtitle: 'Whether you need a single module or the full suite — let\'s discuss how Leaf can streamline your operations.',
+      title: 'Your systems are waiting to work together.',
+      subtitle: 'If your ERP, HR system, and CRM don\'t communicate, you\'re managing the gaps manually. Leaf closes them — automatically.',
       btn1: 'Start a Conversation',
       btn2: 'Explore Leaf',
     },
@@ -341,18 +341,18 @@ export const translations = {
       contact: 'Contatti',
     },
     hero: {
-      badge: 'Costruiamo il Futuro del Software Aziendale',
-      title: 'Soluzioni Software',
-      titleHighlight: 'Intelligenti',
-      titleEnd: 'per Imprese Moderne',
+      badge: 'Architettura e Integrazione per il Business Italiano',
+      title: 'I Tuoi Sistemi Sono',
+      titleHighlight: 'Frammentati.',
+      titleEnd: 'Noi li Connettiamo.',
       subtitle: 'Progettiamo e costruiamo ecosistemi software modulari e scalabili che unificano le tue operazioni — dalla contabilità all\'HR, dal CRM alla gestione dei flussi di lavoro.',
       cta1: 'Scopri Leaf',
       cta2: 'Contattaci',
     },
     services: {
       badge: 'Cosa Facciamo',
-      title: 'Come Aiutiamo le Imprese a',
-      titleHighlight: 'Crescere',
+      title: 'Dall\'Architettura',
+      titleHighlight: 'alla Produzione',
       subtitle: 'Consulenza specializzata sull\'intero ciclo di vita del software — dall\'architettura al deployment in produzione.',
       consulting: {
         title: 'Consulenza Software & Architettura',
@@ -362,7 +362,7 @@ export const translations = {
       },
       development: {
         title: 'Sviluppo Software Personalizzato',
-        description: 'Soluzioni su misura con tecnologie moderne. Sviluppo full-stack, integrazioni API e prodotti digitali completi.',
+        description: 'Quando i tool standard non si adattano al tuo processo, costruiamo ciò che serve. Sviluppo full-stack, integrazioni API e prodotti production-ready — con la manutenibilità a lungo termine come priorità di progettazione.',
         solves: 'Software preconfezionato che non si adatta al tuo processo. Costruiamo esattamente ciò che ti serve — né più, né meno.',
         how: 'Sviluppo Agile, continuous delivery, testing automatizzato. Dal prototipo alla produzione in settimane, non mesi.',
       },
@@ -374,7 +374,7 @@ export const translations = {
       },
       support: {
         title: 'Supporto & Evoluzione Continua',
-        description: 'Supporto con SLA, monitoraggio, aggiornamenti e miglioramento continuo. Cresciamo insieme al tuo business.',
+        description: 'Supporto con SLA, monitoraggio proattivo, aggiornamenti strutturati e miglioramento continuo. Il tuo sistema rimane affidabile e coerente man mano che l\'azienda evolve.',
         solves: 'Sistemi che degradano nel tempo. Manteniamo il tuo software operativo, in evoluzione e performante ai massimi livelli.',
         how: 'Ingegneri di supporto dedicati, monitoraggio proattivo, review trimestrali ed evoluzione delle funzionalità basata sul tuo feedback.',
       },
@@ -382,8 +382,8 @@ export const translations = {
     leaf: {
       badge: 'Il Nostro Prodotto Core',
       title: 'Una Suite.',
-      titleHighlight: 'Ogni Modulo.',
-      titleEnd: 'Controllo Totale.',
+      titleHighlight: 'Controllo Totale.',
+      titleEnd: '',
       subtitle: 'Smetti di gestire software. Inizia a gestire la tua azienda. Leaf connette ogni strumento, automatizza ogni flusso di lavoro e mette i dati in tempo reale a portata di mano — così il tuo team può concentrarsi sulle decisioni, non sui problemi tecnici.',
       whatIs: {
         title: 'Cos\'è Leaf?',
@@ -493,17 +493,17 @@ export const translations = {
     },
     about: {
       badge: 'Chi Siamo',
-      title: 'Costruiamo la',
-      titleHighlight: 'Prossima Generazione',
-      titleEnd: 'di Software Aziendale',
-      subtitle: 'Non siamo l\'ennesima azienda software. Stiamo costruendo il sistema operativo per le PMI italiane — modulare, event-driven e progettato per scalare.',
+      title: 'Progettiamo',
+      titleHighlight: 'Sistemi di Integrazione,',
+      titleEnd: 'Non Solo Software.',
+      subtitle: 'RealInnovation è una software architecture firm. Progettiamo piattaforme event-driven, costruiamo layer di integrazione tra sistemi esistenti ed eliminiamo la frammentazione operativa che costa alle PMI italiane migliaia di ore ogni anno.',
       mission: {
         title: 'La Nostra Missione',
-        description: 'Eliminare i panorami software frammentati. Costruiamo ecosistemi unificati dove ogni strumento parla la stessa lingua — una piattaforma, infinite possibilità.',
+        description: 'Eliminare la frammentazione operativa. Le aziende italiane che operano su strumenti disconnessi perdono visibilità, tempo e denaro. Costruiamo il layer di integrazione che restituisce il controllo.',
       },
       vision: {
         title: 'La Nostra Visione',
-        description: 'Diventare il partner di riferimento per le PMI italiane nella trasformazione digitale — non solo come fornitori software, ma come partner tecnologico a 360° che usa i propri strumenti.',
+        description: 'Diventare il partner di riferimento per la progettazione dei sistemi nelle PMI italiane. Non come un altro vendor nello stack — ma come il team che rende l\'intero stack coerente e manutenibile.',
       },
       problem: {
         title: 'Il Problema',
@@ -531,10 +531,10 @@ export const translations = {
       },
       whyUs: {
         title: 'Perché RealInnovation',
-        subtitle: 'Combiniamo competenza di dominio approfondita con ingegneria moderna per risultati che contano.',
+        subtitle: 'Conosciamo i vincoli contabili, HR e di compliance del business italiano. Progettiamo sistemi attorno a quei vincoli — non nonostante essi.',
         engineering: {
           title: 'Eccellenza Ingegneristica',
-          description: 'Domain-Driven Design, architettura event-driven, microservizi su Kubernetes. Non scriviamo solo codice — progettiamo sistemi che scalano.',
+          description: 'Domain-Driven Design, architettura event-driven, microservizi containerizzati. Modelliamo la complessità del business direttamente nel codice — così il sistema riflette il tuo dominio, non solo i requisiti.',
         },
         domain: {
           title: 'Competenza di Dominio',
@@ -551,14 +551,14 @@ export const translations = {
       },
       stats: {
         modules: 'Moduli nell\'Ecosistema',
-        uptime: 'SLA Uptime',
-        response: 'Risposta API',
+        clients: 'Clienti',
+        saved: 'Risparmiate a settimana',
         italy: 'Made in Italy',
       },
       values: {
         title: 'Cosa Ci Muove',
         innovation: 'Innovazione',
-        innovationDesc: 'Spingiamo i limiti con architetture all\'avanguardia e pattern moderni.',
+        innovationDesc: 'Applichiamo pattern architetturali consolidati ai problemi complessi. Non trend — approcci che rimangono manutenibili man mano che i sistemi crescono.',
         reliability: 'Affidabilità',
         reliabilityDesc: 'Sistemi event-driven e fault-tolerant su cui puoi contare.',
         simplicity: 'Semplicità',
@@ -580,7 +580,7 @@ export const translations = {
       title: 'Prezzi',
       titleHighlight: 'Trasparenti',
       titleEnd: 'e Semplici',
-      subtitle: 'Scegli il piano adatto al tuo business. Scala quando vuoi.',
+      subtitle: 'Prezzi trasparenti per ogni fase del tuo percorso di integrazione. Inizia con un modulo, espandi quando le tue esigenze crescono.',
       starter: {
         name: 'Starter',
         price: '€49',
@@ -621,7 +621,7 @@ export const translations = {
     contact: {
       badge: 'Contattaci',
       title: 'Costruiamo Qualcosa',
-      titleHighlight: 'Insieme',
+      titleHighlight: 'Insieme.',
       subtitle: 'Che tu abbia bisogno di un partner tecnico, una soluzione modulare o una trasformazione digitale completa — siamo qui per aiutarti.',
       form: {
         name: 'Nome Completo',
@@ -629,7 +629,7 @@ export const translations = {
         company: 'Azienda',
         interest: 'Sono interessato a...',
         interestOptions: ['Consulenza Software', 'Suite Leaf', 'Sviluppo Custom', 'Partnership', 'Altro'],
-        message: 'Raccontaci del tuo progetto',
+        message: 'Descrivi i tuoi sistemi e dove si interrompono',
         submit: 'Invia Messaggio',
       },
       info: {
@@ -647,7 +647,7 @@ export const translations = {
       readMore: 'Leggi di Più',
     },
     footer: {
-      description: 'Soluzioni software modulari per imprese moderne. Costruito con passione in Italia.',
+      description: 'Integrazione di sistemi e architettura software per PMI italiane. Costruito in Italia, per il business italiano.',
       navigation: 'Navigazione',
       products: 'Prodotti',
       connect: 'Connettiti',
@@ -655,8 +655,8 @@ export const translations = {
       builtWith: 'Costruito con Astro & Tailwind CSS',
     },
     cta: {
-      title: 'Pronto a Trasformare il Tuo Business?',
-      subtitle: 'Che tu abbia bisogno di un singolo modulo o della suite completa — parliamo di come Leaf può ottimizzare le tue operazioni.',
+      title: 'I tuoi sistemi aspettano di lavorare insieme.',
+      subtitle: 'Se il tuo ERP, il sistema HR e il CRM non comunicano tra loro, stai gestendo i vuoti manualmente. Leaf li chiude — automaticamente.',
       btn1: 'Inizia una Conversazione',
       btn2: 'Esplora Leaf',
     },
